@@ -22,7 +22,6 @@ public class BookServlet extends HttpServlet{
 		Book book = new Book(isbn, name, author);
 		BookDAO dao = new BookDAO();
 		dao.addBook(book);
-	//	request.getRequestDispatcher("index.jsp").forward(request, response);
 		response.sendRedirect("index.jsp");
 		
 	}
