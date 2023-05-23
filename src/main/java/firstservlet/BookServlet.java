@@ -22,6 +22,7 @@ public class BookServlet extends HttpServlet{
 		Book book = new Book(isbn, name, author);
 		BookDAO dao = new BookDAO();
 		dao.addBook(book);
+		response.addCookie(new Cookie("hello","mycookivalue"));
 		response.sendRedirect("index.jsp");
 		
 	}

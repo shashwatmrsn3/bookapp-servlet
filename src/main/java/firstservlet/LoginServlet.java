@@ -5,11 +5,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -20,7 +16,10 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		boolean userExists = new UserDAO().checkUser(new User(email,password));
-	
+		if(userExists) {
+			request.getSession().setAttribute("email", email);
+		
+		}
 		response.sendRedirect("index.jsp");
 	}
 
